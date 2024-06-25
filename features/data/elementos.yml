@@ -1,0 +1,6 @@
+menu_principal :     "~open menu"
+menu_login :         "@text="Login In"
+campo_username :     "@content-desc = "Username input field"
+campo_password :     "@content_desc = "Password input field"
+botao_login:         "@content-desc = "Login button"
+mensagem_erro :      "@content-desc = "generic-error-message"
