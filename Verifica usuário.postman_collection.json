@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "a683fbb9-97f5-4fe5-b96c-5dd4a27d89b6",
+		"name": "Verifica usuário",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23110991"
+	},
+	"item": [
+		{
+			"name": "Criar usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Criar usuario\", function () {\r",
+							"    pm.sendRequest({\r",
+							"        url: 'https://automationexercise.com/api/createAccount',\r",
+							"        method: 'POST',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/json'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify({\r",
+							"                \"name\": \"Jose da Silva\",\r",
+							"                \"email\": \"email@gmail.com\",\r",
+							"                \"password\": \"senha123\",\r",
+							"                \"title\": \"Mr\",\r",
+							"                \"birth_date\": \"01\",\r",
+							"                \"birth_month\": \"01\",\r",
+							"                \"birth_year\": \"2000\",\r",
+							"                \"firstname\": \"Jose\",\r",
+							"                \"lastname\": \"Silva\",\r",
+							"                \"company\": \"DTI\",\r",
+							"                \"address1\": \"Rua do Ouro\",\r",
+							"                \"address2\": \"Serra\",\r",
+							"                \"country\": \"Brasil\",\r",
+							"                \"zipcode\": \"12345\",\r",
+							"                \"state\": \"Minas\",\r",
+							"                \"city\": \"Belo Horizonte\",\r",
+							"                \"mobile_number\": \"1234567890\"\r",
+							"            })\r",
+							"        }\r",
+							"    }, function (err, response) {\r",
+							"        pm.expect(response.code).to.equal(201);\r",
+							"        pm.expect(response.json().message).to.equal('User created!');\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jose da Silva\",\r\n    \"email\": \"email@gmail.com\",\r\n    \"password\": \"senha123\",\r\n    \"title\": \"Mr\",\r\n    \"birth_date\": \"01\",\r\n    \"birth_month\": \"01\",\r\n    \"birth_year\": \"2000\",\r\n    \"firstname\": \"Jose\",\r\n    \"lastname\": \"Silva\",\r\n    \"company\": \"DTI\",\r\n    \"address1\": \"Rua do Ouro\",\r\n    \"address2\": \"Serra\",\r\n    \"country\": \"Brasil\",\r\n    \"zipcode\": \"12345\",\r\n    \"state\": \"Minas\",\r\n    \"city\": \"Belo Horizonte\",\r\n    \"mobile_number\": \"1234567890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/createAccount",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"createAccount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retornar usuario",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Retornar usuario\", function () {\r",
+							"    pm.sendRequest({\r",
+							"        url: 'https://automationexercise.com/api/getUserDetailByEmail',\r",
+							"        method: 'GET',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/json'\r",
+							"        },\r",
+							"        params: {\r",
+							"            \"email\": \"email@gmail.com\"\r",
+							"        }\r",
+							"    }, function (err, response) {\r",
+							"        pm.expect(response.code).to.equal(200);\r",
+							"        pm.expect(response.json()).to.have.property('User Detail');\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"email\": \"email@gmail.com\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/getUserDetailByEmail",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"getUserDetailByEmail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar usuário",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Excluir conta por email e senha\", function () {\r",
+							"    pm.sendRequest({\r",
+							"        url: 'https://automationexercise.com/api/deleteAccount',\r",
+							"        method: 'DELETE',\r",
+							"        header: {\r",
+							"            'Content-Type': 'application/json'\r",
+							"        },\r",
+							"        body: {\r",
+							"            mode: 'raw',\r",
+							"            raw: JSON.stringify({\r",
+							"                \"email\": \"email@gmail.com\",\r",
+							"                \"password\": \"senha123\"\r",
+							"            })\r",
+							"        }\r",
+							"    }, function (err, response) {\r",
+							"        pm.expect(response.code).to.equal(200);\r",
+							"        pm.expect(response.json().message).to.equal('Account deleted!');\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"email@gmail.com\",\r\n    \"password\": \"senha123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/deleteAccount",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"deleteAccount"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
